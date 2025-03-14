@@ -1,17 +1,28 @@
-# minimal-reproduction-template
+# 34786
 
-First, read the [Renovate minimal reproduction instructions](https://github.com/renovatebot/renovate/blob/main/docs/development/minimal-reproductions.md).
+Reproduction for [Renovate discussion 34786](https://github.com/renovatebot/renovate/discussions/34786).
 
-Then replace the current `h1` with the Renovate Issue/Discussion number.
 
 ## Current behavior
 
-Explain the current behavior here.
+This repo contains a Dockerfile with dependency on image with tag versioning like:
+```
+FROM ghcr.io/atanev/minimal-reproduction-template:2025.02.14-1
+```
+
+Also a `Chart.yaml` file with a dependecy chart using the same versioning:
+
+```
+dependencies:
+  - name: parent-chart
+    version: 2025.02.14-1
+```
+Both are using versioning based on `YYYY.MM.DD-buildID`.
+
+In the reproduction scenario I have published the same artifacts with version like `YYYY.MM.DD-buildID` also with semver `0.0.1` and `0.0.2`
+When I switch the versions in the Dockerfile/Chart.yaml to the semver format right away I get the PRs for both, but when I have like this it does not work.
+
 
 ## Expected behavior
 
-Explain the expected behavior here.
-
-## Link to the Renovate issue or Discussion
-
-Put your link to the Renovate issue or Discussion here.
+I would like to receive PRs for versioning following the `YYYY.MM.DD-buildID` increments.
