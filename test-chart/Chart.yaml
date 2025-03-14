@@ -25,5 +25,5 @@ appVersion: "1.16.0"
 
 dependencies:
   - name: parent-chart
-    version: 0.0.1
+    version: 0.0.2
     repository: oci://ghcr.io/atanev/minimal-reproduction-template
